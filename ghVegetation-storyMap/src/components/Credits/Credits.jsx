@@ -20,6 +20,7 @@ function Credits() {
             <p className={styles.text}>
               Course: Web GIS &mdash; Lab Assignment 3
             </p>
+            <p className={styles.text}>Student ID: 11015437</p>
           </div>
 
           {/* Image credits */}
