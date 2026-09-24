@@ -1,0 +1,39 @@
+/* ───────────────────────────────────────────────────
+   Separator — leaf-motif decorative rule
+   ─────────────────────────────────────────────────── */
+
+.wrapper {
+  padding: 2.5rem var(--section-padding-x);
+  display: flex;
+  justify-content: center;
+}
+
+.line {
+  position: relative;
+  width: 100%;
+  max-width: var(--content-max-width);
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(45, 106, 79, 0.5) 20%,
+    rgba(212, 175, 122, 0.6) 50%,
+    rgba(45, 106, 79, 0.5) 80%,
+    transparent
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Leaf-shaped ornament */
+.leaf {
+  position: relative;
+  z-index: 2;
+  background: var(--color-canopy);
+  padding: 0 12px;
+  color: var(--color-straw);
+  font-size: 1.2rem;
+  opacity: 0.75;
+  line-height: 1;
+}

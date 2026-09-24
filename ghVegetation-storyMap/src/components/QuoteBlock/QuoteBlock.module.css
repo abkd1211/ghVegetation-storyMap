@@ -1,0 +1,66 @@
+/* ──────────────────────────────────────────────────────────
+   QuoteBlock — Dramatic botanical pull-quote
+   ────────────────────────────────────────────────────────── */
+
+.section {
+  background-color: var(--color-midgreen);
+  padding: var(--section-padding-y) var(--section-padding-x);
+  opacity: 0;
+  transform: scale(0.96);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+/* Large decorative quotation mark */
+.quoteMark {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(5rem, 10vw, 8rem);
+  line-height: 0.6;
+  color: var(--color-straw);
+  opacity: 0.35;
+  margin-bottom: 0.5rem;
+  user-select: none;
+}
+
+.quote {
+  border: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.quote p {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 500;
+  font-style: italic;
+  color: var(--color-cream);
+  line-height: var(--leading-snug);
+  max-width: none;
+}
+
+.attribution {
+  font-family: var(--font-caption);
+  font-size: var(--text-sm);
+  font-style: normal;
+  color: var(--color-straw);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .quote p { font-size: var(--text-xl); }
+}

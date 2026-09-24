@@ -1,0 +1,179 @@
+/* ─────────────────────────────────────────────────────────────
+   Sidecar — Threats & Conservation scroll-pinned layout
+   LEFT: scrolling narrative cards | RIGHT: sticky crossfade image
+   ───────────────────────────────────────────────────────────── */
+
+.section {
+  background-color: var(--color-canopy);
+  color: var(--color-cream);
+  overflow: hidden;
+}
+
+/* Section heading */
+.header {
+  padding: var(--section-padding-y) var(--section-padding-x) 0;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  color: var(--color-cream);
+  letter-spacing: var(--tracking-tight);
+}
+
+.headerRule {
+  border: none;
+  border-top: 2px solid var(--color-midgreen);
+  margin-top: 1rem;
+  max-width: 80px;
+  margin-left: 0;
+}
+
+/* Two-column container */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+/* LEFT: scrolling narrative */
+.narrativeColumn {
+  padding: 3rem var(--section-padding-x) 3rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Individual narrative card */
+.narrativeCard {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 2.5rem;
+  border-left: 3px solid transparent;
+  transition: border-color 0.4s ease;
+  position: relative;
+}
+
+.cardActive {
+  border-left-color: var(--color-straw);
+}
+
+.cardInner {
+  max-width: 480px;
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--color-cream);
+  margin-bottom: 1rem;
+  line-height: var(--leading-snug);
+  transition: color 0.3s ease;
+}
+
+.cardActive .cardTitle { color: var(--color-straw); }
+
+.cardBody {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-offwhite);
+  line-height: var(--leading-relaxed);
+  opacity: 0.82;
+  max-width: none;
+}
+
+.cardActive .cardBody { opacity: 1; }
+
+/* Mobile-only image (hidden on desktop) */
+.mobileImage {
+  display: none;
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* RIGHT: sticky image panel */
+.imageColumn {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Left-edge fade overlay */
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    var(--color-canopy) 0%,
+    transparent 25%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Bottom-edge overlay */
+.imageOverlay::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to top, var(--color-canopy), transparent);
+}
+
+/* Stacked images — only activeIndex is visible */
+.sidecarImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.sidecarImageActive {
+  opacity: 1;
+}
+
+/* ─── Responsive: mobile stacks vertically ─── */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .narrativeColumn {
+    padding: 2rem var(--section-padding-x);
+  }
+
+  .narrativeCard {
+    min-height: auto;
+    padding: 1.5rem 0;
+    border-left: none;
+    border-bottom: 1px solid rgba(45, 106, 79, 0.3);
+  }
+
+  .cardActive { border-left: none; }
+
+  .mobileImage { display: block; }
+
+  .imageColumn { display: none; }
+}

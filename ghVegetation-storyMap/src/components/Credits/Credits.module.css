@@ -1,0 +1,79 @@
+/* ──────────────────────────────────────────────────────────
+   Credits — Footer with attribution
+   ────────────────────────────────────────────────────────── */
+
+.footer {
+  background-color: #080f0a;
+  padding: 0 var(--section-padding-x) 3rem;
+}
+
+.container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2.5rem;
+  padding: 3rem 0 2rem;
+}
+
+.block {}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-straw);
+  margin-bottom: 0.4rem;
+}
+
+.text {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-offwhite);
+  opacity: 0.65;
+  line-height: var(--leading-relaxed);
+  max-width: none;
+}
+
+.subheading {
+  font-family: var(--font-caption);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-moss);
+  margin-bottom: 0.6rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.link {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-offwhite);
+  opacity: 0.6;
+  transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+
+.link:hover {
+  opacity: 1;
+  color: var(--color-straw);
+}
+
+.copyright {
+  font-family: var(--font-caption);
+  font-size: 0.72rem;
+  color: var(--color-offwhite);
+  opacity: 0.35;
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(45, 106, 79, 0.2);
+  max-width: none;
+}

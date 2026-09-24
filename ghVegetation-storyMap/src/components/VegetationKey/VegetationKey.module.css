@@ -1,0 +1,117 @@
+/* ──────────────────────────────────────────────────────────
+   VegetationKey — Horizontal biome legend strip
+   Six colour-coded zones with rainfall indicators.
+   ────────────────────────────────────────────────────────── */
+
+.section {
+  background-color: var(--color-canopy);
+  padding: 0 var(--section-padding-x) 3.5rem;
+}
+
+.header {
+  text-align: center;
+  padding-bottom: 2.5rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-caption);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-straw);
+  margin-bottom: 0.75rem;
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--color-cream);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* Horizontal strip of zone cards */
+.strip {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(45, 106, 79, 0.3);
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.zoneCard {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1rem;
+  border-right: 1px solid rgba(13, 43, 26, 0.4);
+  transition: flex 0.4s ease, padding 0.4s ease;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+.zoneCard:last-child { border-right: none; }
+
+.zoneCard:hover {
+  flex: 1.5;
+}
+
+/* Colour bar at top of each card */
+.colorBar {
+  height: 4px;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.75rem;
+}
+
+.zoneName {
+  font-family: var(--font-caption);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-cream);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.rainfall {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--color-straw);
+  opacity: 0.8;
+}
+
+.location {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  color: var(--color-offwhite);
+  opacity: 0.5;
+  margin-top: 0.3rem;
+  line-height: 1.4;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 900px) {
+  .strip {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .zoneCard:nth-child(3) { border-right: none; }
+  .zoneCard:nth-child(4) { border-top: 1px solid rgba(13, 43, 26, 0.4); }
+  .zoneCard:nth-child(5) { border-top: 1px solid rgba(13, 43, 26, 0.4); }
+  .zoneCard:nth-child(6) { border-top: 1px solid rgba(13, 43, 26, 0.4); border-right: none; }
+}
+
+@media (max-width: 520px) {
+  .strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .zoneCard:nth-child(2n) { border-right: none; }
+  .zoneCard:nth-child(n+3) { border-top: 1px solid rgba(13, 43, 26, 0.4); }
+}

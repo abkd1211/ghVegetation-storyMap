@@ -1,0 +1,209 @@
+/* ───────────────────────────────────────────────
+   Hero — Full-viewport cover with parallax feel
+   ─────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-canopy);
+}
+
+/* Background image */
+.backgroundImage {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Kakum_National_Park%2C_Ghana_%281%29.jpg/1280px-Kakum_National_Park%2C_Ghana_%281%29.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  transform: scale(1.05);
+  transition: transform 20s ease-out;
+}
+
+/* Multi-layer gradient overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to right,
+      rgba(13, 43, 26, 0.92) 0%,
+      rgba(13, 43, 26, 0.6) 55%,
+      rgba(13, 43, 26, 0.25) 100%
+    ),
+    linear-gradient(
+      to top,
+      rgba(13, 43, 26, 0.8) 0%,
+      transparent 50%
+    );
+}
+
+/* Diagonal accent stripe */
+.accentStripe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--color-straw), var(--color-laterite));
+  z-index: 2;
+}
+
+/* Content — centre-left positioning */
+.content {
+  position: relative;
+  z-index: 3;
+  max-width: 820px;
+  padding: 0 clamp(40px, 8vw, 120px);
+}
+
+/* Eyebrow tag */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-caption);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-straw);
+  border: 1px solid rgba(212, 175, 122, 0.4);
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.5rem;
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-straw);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* Title */
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7.5vw, 6.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  color: var(--color-cream);
+  margin: 0 0 0.15em;
+  letter-spacing: -0.03em;
+}
+
+.titleAccent {
+  color: var(--color-straw);
+  font-style: italic;
+  display: block;
+}
+
+/* Subtitle */
+.subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-weight: 400;
+  color: var(--color-offwhite);
+  margin: 1.25rem 0 0;
+  opacity: 0.88;
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+/* Stats row */
+.statsRow {
+  display: flex;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.statValue {
+  font-family: var(--font-caption);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  color: var(--color-straw);
+  line-height: 1;
+}
+
+.statLabel {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-offwhite);
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Scroll indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: 40px;
+  right: clamp(32px, 6vw, 80px);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-cream);
+  opacity: 0.65;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.scrollLabel {
+  font-family: var(--font-caption);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  transform: rotate(180deg);
+}
+
+.scrollLine {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--color-straw), transparent);
+  animation: growLine 2s ease-in-out infinite;
+}
+
+@keyframes growLine {
+  0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  40%  { opacity: 1; }
+  100% { transform: scaleY(1); transform-origin: top; opacity: 0.3; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero { align-items: flex-end; }
+
+  .content {
+    padding: 0 24px;
+    padding-bottom: 100px;
+  }
+
+  .title { font-size: clamp(2.4rem, 10vw, 3.5rem); }
+  .subtitle { font-size: 1rem; }
+
+  .scrollIndicator {
+    bottom: 24px;
+    right: 24px;
+  }
+
+  .statsRow { gap: 1.25rem; }
+}

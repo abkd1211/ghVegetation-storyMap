@@ -1,0 +1,62 @@
+/* ──────────────────────────────────────────────────────────
+   ButtonLink — Styled CTA button variants
+   ────────────────────────────────────────────────────────── */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-caption);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  white-space: nowrap;
+}
+
+/* Green variant (primary) */
+.green {
+  background-color: var(--color-midgreen);
+  color: var(--color-cream);
+  border-color: var(--color-midgreen);
+}
+
+.green:hover {
+  background-color: var(--color-forest);
+  border-color: var(--color-straw);
+  color: var(--color-straw);
+  box-shadow: 0 4px 16px rgba(45, 106, 79, 0.4);
+}
+
+/* Gold variant */
+.gold {
+  background-color: var(--color-straw);
+  color: var(--color-canopy);
+  border-color: var(--color-straw);
+}
+
+.gold:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  box-shadow: 0 4px 16px rgba(212, 175, 122, 0.4);
+  color: var(--color-canopy);
+}
+
+/* Outline variant */
+.outline {
+  background-color: transparent;
+  color: var(--color-cream);
+  border-color: rgba(245, 240, 230, 0.45);
+}
+
+.outline:hover {
+  background-color: rgba(245, 240, 230, 0.12);
+  border-color: var(--color-cream);
+  color: var(--color-cream);
+}

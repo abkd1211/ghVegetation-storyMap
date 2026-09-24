@@ -1,0 +1,26 @@
+/* ───────────────────────────────────────────────────────────────
+   ProgressBar — Fixed top scroll-progress indicator (forest green)
+   ─────────────────────────────────────────────────────────────── */
+
+.track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(13, 43, 26, 0.4);
+  z-index: var(--z-toast);
+  backdrop-filter: blur(4px);
+}
+
+.bar {
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    var(--color-midgreen),
+    var(--color-straw)
+  );
+  transition: width 100ms linear;
+  border-radius: 0 var(--radius-full) var(--radius-full) 0;
+  box-shadow: 0 0 8px rgba(45, 106, 79, 0.7);
+}

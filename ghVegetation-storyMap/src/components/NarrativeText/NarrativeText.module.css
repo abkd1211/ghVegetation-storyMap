@@ -1,0 +1,68 @@
+/* ─────────────────────────────────────────────────────
+   NarrativeText — Rich-text section
+   ───────────────────────────────────────────────────── */
+
+.section {
+  padding: var(--section-padding-y) var(--section-padding-x);
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Light theme */
+.light {
+  background-color: var(--color-cream);
+  color: var(--color-canopy);
+}
+
+/* Dark theme */
+.dark {
+  background-color: var(--color-forest);
+  color: var(--color-cream);
+}
+
+/* Soft sage theme */
+.sage {
+  background-color: #e8f0eb;
+  color: var(--color-canopy);
+}
+
+.container {
+  max-width: var(--narrow-max-width);
+  margin: 0 auto;
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  margin-bottom: 1.5rem;
+  letter-spacing: var(--tracking-tight);
+}
+
+.light .heading { color: var(--color-forest); }
+.dark .heading  { color: var(--color-straw); }
+.sage .heading  { color: var(--color-forest); }
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.body p {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+@media (max-width: 600px) {
+  .heading { font-size: var(--text-2xl); }
+}

@@ -1,0 +1,114 @@
+/* ──────────────────────────────────────────────────────────
+   ConservationCTA — Call to Action section
+   ────────────────────────────────────────────────────────── */
+
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: var(--section-padding-y) var(--section-padding-x);
+  isolation: isolate;
+}
+
+/* Background satellite-esque forest image */
+.bgImage {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Kakum_National_Park%2C_Ghana_%281%29.jpg/1280px-Kakum_National_Park%2C_Ghana_%281%29.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+}
+
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(13, 43, 26, 0.95) 0%,
+      rgba(26, 74, 46, 0.85) 50%,
+      rgba(13, 43, 26, 0.9) 100%
+    );
+  z-index: -1;
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--color-cream);
+}
+
+.badge {
+  display: inline-block;
+  font-family: var(--font-caption);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-straw);
+  border: 1px solid rgba(212, 175, 122, 0.45);
+  padding: 5px 16px;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.5rem;
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--color-cream);
+  margin-bottom: 0.75rem;
+  letter-spacing: var(--tracking-tight);
+}
+
+/* Decorative green-to-gold line */
+.greenLine {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, var(--color-midgreen), var(--color-straw));
+  border-radius: var(--radius-full);
+  margin: 0 auto 2rem;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-bottom: 2.5rem;
+  text-align: left;
+}
+
+.textBlock p {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-offwhite);
+  line-height: var(--leading-relaxed);
+  opacity: 0.9;
+  max-width: none;
+}
+
+.quote {
+  border-left: 3px solid var(--color-straw);
+  padding: 0.75rem 1.25rem;
+  background: rgba(212, 175, 122, 0.08);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: var(--text-lg);
+  color: var(--color-straw);
+  margin: 0.5rem 0;
+}
+
+/* Button group */
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .heading { font-size: var(--text-3xl); }
+  .textBlock { text-align: center; }
+}
