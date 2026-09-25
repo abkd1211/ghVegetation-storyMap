@@ -1,23 +1,26 @@
 /* ──────────────────────────────────────────────────────────
-   ButtonLink — Styled CTA button variants
+   ButtonLink — Styled CTA button variants (responsive)
    ────────────────────────────────────────────────────────── */
 
 .button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   font-family: var(--font-caption);
-  font-size: 0.8rem;
+  font-size: clamp(0.72rem, 1.5vw, 0.8rem);
   font-weight: 600;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  padding: 12px 24px;
+  padding: 13px 24px;
   border-radius: var(--radius-full);
   cursor: pointer;
   transition: all var(--transition-base);
   text-decoration: none;
   border: 1.5px solid transparent;
   white-space: nowrap;
+  min-height: 44px;          /* WCAG touch target */
+  touch-action: manipulation;
 }
 
 /* Green variant (primary) */
@@ -27,7 +30,7 @@
   border-color: var(--color-midgreen);
 }
 
-.green:hover {
+.green:hover, .green:focus-visible {
   background-color: var(--color-forest);
   border-color: var(--color-straw);
   color: var(--color-straw);
@@ -41,11 +44,10 @@
   border-color: var(--color-straw);
 }
 
-.gold:hover {
+.gold:hover, .gold:focus-visible {
   background-color: var(--color-accent-hover);
   border-color: var(--color-accent-hover);
   box-shadow: 0 4px 16px rgba(212, 175, 122, 0.4);
-  color: var(--color-canopy);
 }
 
 /* Outline variant */
@@ -55,8 +57,14 @@
   border-color: rgba(245, 240, 230, 0.45);
 }
 
-.outline:hover {
+.outline:hover, .outline:focus-visible {
   background-color: rgba(245, 240, 230, 0.12);
   border-color: var(--color-cream);
-  color: var(--color-cream);
+}
+
+@media (max-width: 480px) {
+  .button {
+    width: 100%;
+    padding: 13px 20px;
+  }
 }

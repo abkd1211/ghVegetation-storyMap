@@ -1,7 +1,6 @@
-/* ──────────────────────────────────────────────────────────
-   VegetationKey — Horizontal biome legend strip
-   Six colour-coded zones with rainfall indicators.
-   ────────────────────────────────────────────────────────── */
+/* ─────────────────────────────────────────────────────────────
+   VegetationKey — Horizontal biome legend strip (responsive)
+   ───────────────────────────────────────────────────────────── */
 
 .section {
   background-color: var(--color-canopy);
@@ -10,7 +9,7 @@
 
 .header {
   text-align: center;
-  padding-bottom: 2.5rem;
+  padding-bottom: 2rem;
 }
 
 .eyebrow {
@@ -21,7 +20,7 @@
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--color-straw);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
 .heading {
@@ -32,7 +31,7 @@
   letter-spacing: var(--tracking-tight);
 }
 
-/* Horizontal strip of zone cards */
+/* ─── Strip grid ─────────────────────────────── */
 .strip {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -47,71 +46,73 @@
 .zoneCard {
   display: flex;
   flex-direction: column;
-  padding: 1.25rem 1rem;
+  padding: 1.1rem 0.9rem;
   border-right: 1px solid rgba(13, 43, 26, 0.4);
-  transition: flex 0.4s ease, padding 0.4s ease;
-  cursor: default;
+  transition: background 0.3s ease;
   position: relative;
-  overflow: hidden;
 }
 
 .zoneCard:last-child { border-right: none; }
 
-.zoneCard:hover {
-  flex: 1.5;
-}
-
-/* Colour bar at top of each card */
 .colorBar {
   height: 4px;
   border-radius: var(--radius-full);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.65rem;
 }
 
 .zoneName {
   font-family: var(--font-caption);
-  font-size: 0.68rem;
+  font-size: clamp(0.6rem, 1.1vw, 0.68rem);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--color-cream);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.35rem;
   line-height: 1.3;
 }
 
 .rainfall {
   font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-size: clamp(0.62rem, 1vw, 0.72rem);
   color: var(--color-straw);
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .location {
   font-family: var(--font-body);
-  font-size: 0.68rem;
+  font-size: clamp(0.6rem, 0.9vw, 0.68rem);
   color: var(--color-offwhite);
-  opacity: 0.5;
-  margin-top: 0.3rem;
-  line-height: 1.4;
+  opacity: 0.45;
+  margin-top: 0.25rem;
+  line-height: 1.35;
 }
 
-/* Responsive: stack on mobile */
+/* ─── 3-column on tablet ─────────────────────── */
 @media (max-width: 900px) {
   .strip {
     grid-template-columns: repeat(3, 1fr);
   }
-
   .zoneCard:nth-child(3) { border-right: none; }
-  .zoneCard:nth-child(4) { border-top: 1px solid rgba(13, 43, 26, 0.4); }
-  .zoneCard:nth-child(5) { border-top: 1px solid rgba(13, 43, 26, 0.4); }
-  .zoneCard:nth-child(6) { border-top: 1px solid rgba(13, 43, 26, 0.4); border-right: none; }
+  .zoneCard:nth-child(n+4) {
+    border-top: 1px solid rgba(13, 43, 26, 0.4);
+  }
+  /* Re-enable right border for col 1, 2 in row 2 */
+  .zoneCard:nth-child(4),
+  .zoneCard:nth-child(5) {
+    border-right: 1px solid rgba(13, 43, 26, 0.4);
+  }
+  .zoneCard:nth-child(6) { border-right: none; }
 }
 
+/* ─── 2-column on mobile ─────────────────────── */
 @media (max-width: 520px) {
   .strip {
     grid-template-columns: repeat(2, 1fr);
   }
-
   .zoneCard:nth-child(2n) { border-right: none; }
+  .zoneCard:nth-child(2n+1) { border-right: 1px solid rgba(13, 43, 26, 0.4); }
   .zoneCard:nth-child(n+3) { border-top: 1px solid rgba(13, 43, 26, 0.4); }
+  .zoneName  { font-size: 0.6rem; }
+  .rainfall  { font-size: 0.6rem; }
+  .location  { display: none; }
 }

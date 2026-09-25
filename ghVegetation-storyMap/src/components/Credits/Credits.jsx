@@ -17,9 +17,6 @@ function Credits() {
           <div className={styles.block}>
             <h3 className={styles.heading}>University of Ghana</h3>
             <p className={styles.text}>Department of Geography &amp; Resource Development</p>
-            <p className={styles.text}>
-              Course: Web GIS &mdash; Lab Assignment 3
-            </p>
             <p className={styles.text}>Student ID: 11015437</p>
           </div>
 

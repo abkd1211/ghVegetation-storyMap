@@ -1,5 +1,5 @@
 /* ──────────────────────────────────────────────────────────
-   PhotoGallery — Flora & Fauna horizontal slideshow
+   PhotoGallery — Flora & Fauna horizontal slideshow (responsive)
    ────────────────────────────────────────────────────────── */
 
 .section {
@@ -10,7 +10,7 @@
 
 /* Header */
 .header {
-  padding: 0 var(--section-padding-x) 2.5rem;
+  padding: 0 var(--section-padding-x) 2rem;
   max-width: var(--content-max-width);
   margin: 0 auto;
   text-align: center;
@@ -39,6 +39,7 @@
   cursor: grab;
   user-select: none;
   outline: none;
+  touch-action: pan-y;   /* allow vertical scroll, capture horizontal swipe */
 }
 
 .gallery:active { cursor: grabbing; }
@@ -56,7 +57,7 @@
 .slide {
   flex: 0 0 100%;
   position: relative;
-  height: clamp(300px, 55vh, 600px);
+  height: clamp(220px, 50vw, 560px);
 }
 
 .slideImage {
@@ -73,10 +74,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 2.5rem 2rem 1.5rem;
+  padding: 2.5rem 1.5rem 1.25rem;
   background: linear-gradient(to top, rgba(13, 43, 26, 0.92), transparent);
-  display: flex;
-  align-items: flex-end;
 }
 
 .caption {
@@ -94,10 +93,10 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 5;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: rgba(13, 43, 26, 0.7);
+  background: rgba(13, 43, 26, 0.72);
   border: 1px solid rgba(212, 175, 122, 0.4);
   display: flex;
   align-items: center;
@@ -106,10 +105,11 @@
   cursor: pointer;
   transition: background var(--transition-fast), border-color var(--transition-fast);
   backdrop-filter: blur(4px);
+  touch-action: manipulation;
 }
 
-.arrowPrev { left: 16px; }
-.arrowNext { right: 16px; }
+.arrowPrev { left: 12px; }
+.arrowNext { right: 12px; }
 
 .arrowPrev:hover,
 .arrowNext:hover {
@@ -119,8 +119,8 @@
 }
 
 .arrowIcon {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   stroke: currentColor;
   stroke-width: 2;
   fill: none;
@@ -132,40 +132,50 @@
 .dots {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  padding: 1.25rem 0 0;
+  align-items: center;
+  gap: 7px;
+  padding: 1rem 0 0;
+  flex-wrap: wrap;
 }
 
 .dot,
 .dotActive {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   cursor: pointer;
   border: none;
   transition: all var(--transition-base);
   flex-shrink: 0;
+  height: 7px;
+  touch-action: manipulation;
 }
 
 .dot {
+  width: 7px;
   background: rgba(212, 175, 122, 0.3);
 }
 
 .dotActive {
+  width: 22px;
   background: var(--color-straw);
-  width: 24px;
-  border-radius: var(--radius-full);
   box-shadow: 0 0 8px rgba(212, 175, 122, 0.5);
 }
 
 .srOnly {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip: rect(0,0,0,0);
   white-space: nowrap;
   border: 0;
+}
+
+/* ─── Mobile ────────────────────────────── */
+@media (max-width: 480px) {
+  .heading { font-size: var(--text-2xl); }
+  .arrowPrev { left: 8px; }
+  .arrowNext { right: 8px; }
+  .arrowPrev, .arrowNext { width: 34px; height: 34px; }
+  .caption { font-size: clamp(0.72rem, 2.5vw, 0.85rem); }
+  .captionOverlay { padding: 2rem 1rem 1rem; }
 }

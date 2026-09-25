@@ -1,16 +1,16 @@
 /* ──────────────────────────────────────────────────────────
-   MapTour — North-South Vegetation Transect
+   MapTour — North-South Vegetation Transect (responsive)
    ────────────────────────────────────────────────────────── */
 
 .section {
   background-color: var(--color-canopy);
   color: var(--color-cream);
-  overflow: hidden;
+  overflow: clip;
 }
 
 /* Section header */
 .sectionHeader {
-  padding: var(--section-padding-y) var(--section-padding-x) 3rem;
+  padding: var(--section-padding-y) var(--section-padding-x) 2.5rem;
   max-width: var(--content-max-width);
   margin: 0 auto;
 }
@@ -20,7 +20,7 @@
   font-size: var(--text-3xl);
   font-weight: 600;
   color: var(--color-cream);
-  margin-bottom: 1rem;
+  margin-bottom: 0.9rem;
   letter-spacing: var(--tracking-tight);
 }
 
@@ -33,7 +33,7 @@
   line-height: var(--leading-relaxed);
 }
 
-/* Sidecar layout */
+/* Two-column layout */
 .sidecar {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -43,12 +43,7 @@
 /* LEFT: narrative cards */
 .narrativeColumn {
   padding: 0 0 0 var(--section-padding-x);
-  overflow-y: auto;
-  max-height: 100vh;
-  scrollbar-width: none;
 }
-
-.narrativeColumn::-webkit-scrollbar { display: none; }
 
 /* Tour stop card */
 .card {
@@ -59,7 +54,6 @@
   padding: 2.5rem 2rem;
   border-left: 3px solid rgba(45, 106, 79, 0.3);
   transition: border-color 0.4s ease, background 0.4s ease;
-  cursor: default;
 }
 
 .cardActive {
@@ -70,9 +64,9 @@
 .cardNumber {
   display: block;
   font-family: var(--font-caption);
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-straw);
   margin-bottom: 0.5rem;
@@ -83,7 +77,7 @@
   font-size: var(--text-2xl);
   font-weight: 600;
   color: var(--color-cream);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.65rem;
   line-height: var(--leading-snug);
   transition: color 0.3s ease;
 }
@@ -95,13 +89,13 @@
   align-items: center;
   gap: 6px;
   font-family: var(--font-caption);
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   padding: 3px 10px;
   border-radius: var(--radius-full);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.7rem;
   background: rgba(45, 106, 79, 0.3);
   border: 1px solid rgba(45, 106, 79, 0.5);
   color: var(--color-straw);
@@ -128,7 +122,7 @@
 
 .cardSpacer { height: 40vh; }
 
-/* RIGHT: sticky map */
+/* RIGHT: sticky satellite map */
 .mapColumn {
   position: sticky;
   top: 0;
@@ -150,9 +144,7 @@
 
 .mapOverlayTop {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   height: 80px;
   background: linear-gradient(to bottom, var(--color-canopy), transparent);
   z-index: 400;
@@ -161,32 +153,48 @@
 
 .mapOverlayBottom {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 0; left: 0; right: 0;
   height: 80px;
   background: linear-gradient(to top, var(--color-canopy), transparent);
   z-index: 400;
   pointer-events: none;
 }
 
-/* Responsive */
+/* ─── Tablet & Mobile: single column ───── */
 @media (max-width: 900px) {
-  .sidecar { grid-template-columns: 1fr; }
+  .sidecar {
+    grid-template-columns: 1fr;
+  }
+
+  /* Show a fixed-height map above the cards on tablet */
+  .mapColumn {
+    position: relative;
+    height: 320px;
+    top: auto;
+    order: -1;            /* map renders above narrative */
+  }
 
   .narrativeColumn {
     padding: 0 var(--section-padding-x);
-    max-height: none;
-    overflow-y: visible;
   }
 
   .card {
     min-height: auto;
     padding: 1.5rem 0;
     border-left: none;
-    border-bottom: 1px solid rgba(45, 106, 79, 0.3);
+    border-bottom: 1px solid rgba(45, 106, 79, 0.25);
   }
 
+  .cardActive { border-left: none; border-bottom-color: var(--color-straw); }
+
   .cardSpacer { display: none; }
-  .mapColumn { display: none; }
+
+  .sectionHeading { font-size: var(--text-2xl); }
+}
+
+@media (max-width: 480px) {
+  .mapColumn { height: 240px; }
+  .cardTitle { font-size: var(--text-xl); }
+  .cardDescription { font-size: var(--text-sm); max-width: 100%; }
+  .sectionSubtext { font-size: var(--text-sm); }
 }

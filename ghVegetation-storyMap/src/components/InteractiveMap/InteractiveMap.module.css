@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────────────────────
-   InteractiveMap — Ghana Vegetation Zones GIS Map
+   InteractiveMap — Ghana Vegetation Zones GIS Map (responsive)
    ───────────────────────────────────────────────────────────── */
 
 .section {
@@ -44,7 +44,7 @@
   opacity: 0.85;
   max-width: 640px;
   line-height: var(--leading-relaxed);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 /* Basemap switcher */
@@ -57,19 +57,19 @@
 
 .switcherLabel {
   font-family: var(--font-caption);
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.72rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--color-straw);
-  margin-right: 4px;
+  flex-shrink: 0;
 }
 
 .switcherBtn {
   font-family: var(--font-caption);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 500;
-  padding: 6px 14px;
+  padding: 5px 12px;
   border-radius: var(--radius-full);
   border: 1px solid rgba(45, 106, 79, 0.5);
   background: rgba(13, 43, 26, 0.5);
@@ -77,9 +77,11 @@
   cursor: pointer;
   transition: all var(--transition-fast);
   letter-spacing: 0.04em;
+  touch-action: manipulation;
 }
 
-.switcherBtn:hover {
+.switcherBtn:hover,
+.switcherBtn:focus-visible {
   border-color: rgba(212, 175, 122, 0.6);
   color: var(--color-straw);
   background: rgba(13, 43, 26, 0.8);
@@ -103,28 +105,28 @@
 }
 
 .map {
-  height: 500px;
+  height: clamp(300px, 55vw, 520px);
   width: 100%;
 }
 
 /* Legend */
 .legend {
   max-width: var(--content-max-width);
-  margin: 1.25rem auto 0;
+  margin: 1rem auto 0;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.25rem;
   flex-wrap: wrap;
 }
 
 .legendItem {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   font-family: var(--font-caption);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--color-offwhite);
-  opacity: 0.8;
+  opacity: 0.75;
 }
 
 .legendDotPrimary {
@@ -146,33 +148,12 @@
   flex-shrink: 0;
 }
 
-/* Leaflet popup overrides */
 .customMarker { background: none; border: none; }
-.popup { font-family: var(--font-body); }
-.popupTitle {
-  display: block;
-  font-family: var(--font-caption);
-  font-weight: 600;
-  font-size: 0.85rem;
-  margin-bottom: 4px;
-  color: var(--color-forest);
-}
-.popupDesc {
-  display: block;
-  font-size: 0.78rem;
-  color: #444;
-  margin-bottom: 4px;
-  line-height: 1.5;
-}
-.popupZone {
-  display: block;
-  font-size: 0.7rem;
-  color: var(--color-midgreen);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
 
-@media (max-width: 600px) {
-  .map { height: 360px; }
+@media (max-width: 480px) {
+  .heading { font-size: var(--text-2xl); }
+  .intro { max-width: 100%; font-size: var(--text-sm); }
+  .map { height: 280px; }
+  .basemapSwitcher { gap: 0.4rem; }
+  .switcherBtn { font-size: 0.65rem; padding: 4px 10px; }
 }
